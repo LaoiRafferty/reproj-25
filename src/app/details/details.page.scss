@@ -1,0 +1,35 @@
+ion-card {
+  margin: 20px auto;
+  max-width: 400px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+ion-card-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #222;
+}
+
+ion-card-subtitle {
+  color: #666;
+  font-size: 1em;
+}
+
+img {
+  border-radius: 8px;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ion-card-content {
+  font-size: 1.1em;
+  color: #333;
+}
+
+ion-button {
+  margin-top: 16px;
+}

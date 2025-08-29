@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ item?.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="item">
+  <ion-card>
+    <img 
+      [src]="item.image?.original || 'https://placehold.co/300x450?text=No+Image'" 
+      alt="Poster"
+      style="width: 100%; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;"
+    >
+    <ion-card-header>
+      <ion-card-title style="font-size: 1.5em;">{{ item.name }}</ion-card-title>
+      <ion-card-subtitle>
+        <span *ngIf="item.premiered">Premiered: {{ item.premiered }}</span>
+        <span *ngIf="item.genres?.length"> | Genres: {{ item.genres.join(', ') }}</span>
+        <span *ngIf="item.language"> | Language: {{ item.language }}</span>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div [innerHTML]="item.summary"></div>
+      <ion-list *ngIf="item.rating?.average || item.status || item.runtime">
+        <ion-item *ngIf="item.rating?.average">
+          <ion-label>Rating</ion-label>
+          <ion-note slot="end">{{ item.rating.average }}</ion-note>
+        </ion-item>
+        <ion-item *ngIf="item.status">
+          <ion-label>Status</ion-label>
+          <ion-note slot="end">{{ item.status }}</ion-note>
+        </ion-item>
+        <ion-item *ngIf="item.runtime">
+          <ion-label>Runtime</ion-label>
+          <ion-note slot="end">{{ item.runtime }} min</ion-note>
+        </ion-item>
+      </ion-list>
+      <ion-button expand="block" fill="outline" color="primary" *ngIf="item.officialSite" [href]="item.officialSite" target="_blank">
+        Visit Official Site
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -14,8 +14,7 @@ export class ApiService {
     return this.http.get<any[]>('https://api.tvmaze.com/search/shows?q=star');
   }
 
-  getMovieById(id: string) {
+  getMovieById(id: string | number) {
     return this.http.get<any>(`https://api.tvmaze.com/shows/${id}`);
   }
-  
 }

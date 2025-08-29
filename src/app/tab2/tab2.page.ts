@@ -1,24 +1,22 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-import { ApiService } from '../../services/api.service';
+import { RouterModule } from '@angular/router';
+import { ApiService } from '../services/api.service';  
 
 @Component({
-  standalone: true,
   selector: 'app-tab2',
+  standalone: true,
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
-  imports: [IonicModule, CommonModule],
+  imports: [IonicModule, CommonModule, RouterModule], 
 })
-export class Tab2Page implements OnInit {
-  shows = signal<any[]>([]);
+export class Tab2Page {
+  tvShows: any[] = [];
 
-  constructor(private api: ApiService) {}
-
-  ngOnInit() {
+  constructor(private api: ApiService) {
     this.api.getTvShows().subscribe((data) => {
-      // TVMaze "search/shows" returns { show: {...} }, so we map to just the show
-      this.shows.set(data.map((d: any) => d.show).slice(0, 20));
+      this.tvShows = data.map((item: any) => item.show); 
     });
   }
 }

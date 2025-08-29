@@ -7,7 +7,7 @@
 <ion-content class="ion-padding">
   <ion-grid>
     <ion-row>
-      <ion-col size="6" *ngFor="let m of movies()">
+      <ion-col size="6" *ngFor="let m of movies">
         <ion-card [routerLink]="['/details', m.id]">
           <img [src]="m.image?.medium || 'https://via.placeholder.com/210x295?text=No+Image'" alt="Poster">
           <ion-card-header>
